@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void PrintSubsets(string &str,string & output,int i,set<string>&st){
+	if(i==str.length()){
+		st.insert(output);
+		return;
+	}
+
+	output.push_back(str[i]);
+	PrintSubsets(str,output,i+1,st);
+	output.pop_back();
+	PrintSubsets(str,output,i+1,st);
+}
+int main() {
+
+	string str;
+	cout<<"Enter the string:"<<" ";
+	cin>>str;
+	
+
+	string output;
+	set<string> st;
+	int i=0;
+	PrintSubsets(str,output,i,st);
+  for(auto i:st){
+		cout<<i<<endl;
+	}
+}
