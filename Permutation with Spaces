@@ -1,0 +1,69 @@
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+// } Driver Code Ends
+class Solution{
+public:
+
+ void solve(string inpt, string opt, vector<string> &ans){
+        // base case
+        if(inpt.size()==0){
+            ans.push_back(opt);
+            return ;
+ 
+      }
+        string opt1 = opt;
+        string opt2 = opt;
+        
+        // letter with space
+        opt1.push_back(' ');
+        opt1.push_back(inpt[0]);
+        
+        // letter without space
+        opt2.push_back(inpt[0]);
+        
+        // remove 0th letter
+        inpt.erase(inpt.begin()+0);
+        
+        // recurssion call
+        solve(inpt,opt1,ans);
+        solve(inpt,opt2,ans);
+        
+       
+    }
+
+    vector<string> permutation(string inpt){
+        // Code Here
+        
+        string opt = "";
+        
+        opt.push_back(inpt[0]);
+        inpt.erase(inpt.begin()+0);
+        vector<string> ans;
+        solve(inpt, opt ,ans);
+        return ans;
+        
+    }
+};
+
+//{ Driver Code Starts.
+
+int  main(){
+    int t;
+    cin>>t;
+    while(t--){
+        string S;
+        cin>>S;
+        vector<string> ans;
+        Solution obj;
+        ans = obj.permutation(S);
+        for(int i=0;i<ans.size();i++){
+            cout<<"("<<ans[i]<<")";
+        }
+        cout << endl;
+    }
+}
+
+// } Driver Code Ends
