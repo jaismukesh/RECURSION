@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int solve(string str,char x,int i,int & ans){
+	if(i==str.length()){
+		return 0;
+	}
+if(str[i]==x){
+	ans=i;
+}
+	solve(str,x,i+1,ans);
+
+	return ans;
+}
+int main() {
+  string str="abcdefdghd";
+	char x='d';
+   int ans;
+	int i=0;
+	int result=solve(str,x,i,ans);
+ cout<<"last occurence of char"<<" "<<x<<" "<<"is:"<<""<<result<<endl;
+	
+}
