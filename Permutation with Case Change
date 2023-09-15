@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(string &str,string op,int i){
+	if(str.length()==i){
+		cout<<op<<endl;
+		return;
+	}
+
+	string op1=op;
+	string op2=op;
+	op1.push_back((char) tolower(str[i]));
+	op2.push_back((char)toupper(str[i]));
+
+	solve(str,op1,i+1);
+	op1.pop_back();
+	solve(str,op2,i+1);
+}
+int main() {
+  string str="aBc";
+
+	string op="";
+  int i=0;
+	solve(str,op,i);
+}
