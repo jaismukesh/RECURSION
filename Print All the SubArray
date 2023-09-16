@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void solve(vector<int>&arr,int start,int end){
+	// base case
+   if(end==arr.size()){
+		 return;
+	 }
+	//induction step
+   for(int i=start;i<=end;i++){
+		 cout<<arr[i]<<"";
+	 }
+	cout<<endl;
+	end++;
+	//hypothesis
+	solve(arr,start,end);
+}
+
+void Start(vector<int> &arr,int start,int end){
+	for(int start=0;start<arr.size();start++){
+		solve(arr,start,end);
+	}
+}
+int main() {
+
+	vector<int>arr={1,2,3,4,5};
+  int start=0;
+	int end=start;
+   Start(arr,start,end);
+}
