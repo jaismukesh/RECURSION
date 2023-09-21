@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+
+void PermutationOfString(string &str,int i){
+	if(i>=str.length()){
+		cout<<str<<endl;
+		return;
+	}
+
+	for(int j=i;j<str.length();j++){
+		swap(str[i],str[j]);
+		PermutationOfString(str,i+1);
+
+		swap(str[i],str[j]);
+		
+	}
+}
+
+int main() {
+string str="abc";
+	int i=0;
+	PermutationOfString(str,i);
+}
