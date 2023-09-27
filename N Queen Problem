@@ -1,0 +1,95 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool issafe(vector<vector<char>>&board,int row,int col,int n){
+
+	int i=row;
+	int j=col;
+	// left 
+while(j>=0){
+	if(board[i][j]=='Q'){
+		return false;
+	}
+	j--;
+}
+
+	i=row;
+	j=col;
+	//uperleft
+while(i>=0 && j>=0){
+	if(board[i][j]=='Q'){
+		return false;
+	}
+	i--;
+	j--;
+}
+	//lowerleft
+
+	i=row;
+	j=col;
+
+	while(i<n && j>=0){
+		if(board[i][j]=='Q'){
+			return false;
+		}
+		i++;
+		j--;
+	}
+
+	return true;
+	
+}
+void printing(vector<vector<char>>&board,int n){
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cout<<board[i][j]<<" ";
+		}
+		cout<<endl;
+	}
+	cout<<endl;
+}
+void solve(vector<vector<char>>&board,int col,int n){
+	//Base case
+if(col>=n){
+	printing(board,n);
+	return;
+}
+
+	//One Case Solved
+
+	for(int row=0;row<n;row++){
+  if(issafe(board,row,col,n)){
+		board[row][col]='Q';
+
+		//Recursive Call
+		solve(board,col+1,n);
+
+		//Backtracking
+		
+     board[row][col]='-';
+	}
+	}
+  
+	
+
+	
+}
+int main() {
+int n=4;
+vector<vector<char>>board(n,vector<char>(n,'-'));
+int col=0;
+ solve(board,col,n);
+}
+
+
+--------------------------------------------------------------------------------------------------
+
+OUTPUT:-
+- - Q - 
+Q - - - 
+- - - Q 
+- Q - - 
+
+- Q - - 
+- - - Q 
+Q - - - 
+- - Q - 
