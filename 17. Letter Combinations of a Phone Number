@@ -1,0 +1,43 @@
+class Solution {
+public:
+    void solve(string &digits,int i,unordered_map<int,string>mp, string ans, vector<string>&result){
+      
+       if(i>=digits.length()){
+           result.push_back(ans);
+           return;
+       }
+
+       char digitchar=digits[i];
+       int digitInteger=digitchar -'0';
+       string value=mp[digitInteger];
+
+       for(int j=0;j<value.length();j++){
+           ans.push_back(value[j]);
+        // char ch=value[j];
+           solve(digits,i+1,mp,ans,result);
+           ans.pop_back();
+       }
+    }
+    vector<string> letterCombinations(string digits) {
+        if(digits.length()==0){
+            return {};
+        }
+
+        unordered_map<int,string>mp;
+
+        mp[2]="abc";
+        mp[3]="def";
+        mp[4]="ghi";
+        mp[5]="jkl";
+        mp[6]="mno";
+        mp[7]="pqrs";
+        mp[8]="tuv";
+        mp[9]="wxyz";
+
+        string ans="";
+
+      vector<string>result;
+      solve(digits,0,mp,ans,result);
+      return result;
+    }
+};
